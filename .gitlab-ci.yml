@@ -20,3 +20,19 @@ Test gitlab rule not match inline:
     - when: manual
     script:
       - echo "${CI_JOB_NAME}"
+review:
+  script:
+    - DYNAMIC_ENVIRONMENT_URL="$RANDOM.com"
+    - echo "DYNAMIC_ENVIRONMENT_URL=$DYNAMIC_ENVIRONMENT_URL" >> deploy.env
+  artifacts:
+    reports:
+      dotenv: deploy.env
+  environment:
+    name: $CI_COMMIT_REF_SLUG-dev2
+    url: $DYNAMIC_ENVIRONMENT_URL
+
+stop_review:
+  dependencies: [review]
+  stage: deploy
+  script:
+    - echo "DYNAMIC_ENVIRONMENT_URL=$DYNAMIC_ENVIRONMENT_URL"
