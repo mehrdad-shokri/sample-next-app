@@ -73,7 +73,7 @@ Test gitlab rule var no quote:
   rules:
     - if: "$PRODUCTION"
       when: never
-    - if: $CI_COMMIT_MESSAGE  /$AUTO_MESSAGE_REG_CONTENT/
+    - if: $CI_COMMIT_MESSAGE =~ /$AUTO_MESSAGE_REG_CONTENT/
       when: on_success
     - when: manual
   script:
