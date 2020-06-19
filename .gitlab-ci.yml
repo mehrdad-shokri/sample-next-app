@@ -1,11 +1,41 @@
 variables:
-  AUTO_DEVOPS_PRODUCTION_AUTO: "/^v/"
+  AUTO_MESSAGE: "/^test/"
 
 Test gitlab rule inline:
   rules:
     - if: "$PRODUCTION"
       when: never
     - if: $CI_COMMIT_MESSAGE =~ /^test/
+      when: on_success
+    - when: manual
+  script:
+    - echo "${CI_JOB_NAME}"
+
+Test gitlab rule inline (yoda):
+  rules:
+    - if: "$PRODUCTION"
+      when: never
+    - if: /^test/ =~ $CI_COMMIT_MESSAGE
+      when: on_success
+    - when: manual
+  script:
+    - echo "${CI_JOB_NAME}"
+
+Test gitlab rule var:
+  rules:
+    - if: "$PRODUCTION"
+      when: never
+    - if: $CI_COMMIT_MESSAGE =~ $AUTO_MESSAGE
+      when: on_success
+    - when: manual
+  script:
+    - echo "${CI_JOB_NAME}"
+
+Test gitlab rule var (yoda):
+  rules:
+    - if: "$PRODUCTION"
+      when: never
+    - if: $CI_COMMIT_MESSAGE =~ $AUTO_MESSAGE
       when: on_success
     - when: manual
   script:
