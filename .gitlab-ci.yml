@@ -35,7 +35,7 @@ Test gitlab rule var (yoda):
   rules:
     - if: "$PRODUCTION"
       when: never
-    - if: $CI_COMMIT_MESSAGE =~ $AUTO_MESSAGE
+    - if: $AUTO_MESSAGE =~ $CI_COMMIT_MESSAGE
       when: on_success
     - when: manual
   script:
