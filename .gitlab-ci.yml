@@ -1,5 +1,6 @@
 variables:
   AUTO_MESSAGE: "/^test/"
+  AUTO_MESSAGE_NO_QUOTE: /^test/
 
 Test gitlab rule inline:
   rules:
@@ -21,6 +22,8 @@ Test gitlab rule inline (yoda):
   script:
     - echo "${CI_JOB_NAME}"
 
+##
+
 Test gitlab rule var:
   rules:
     - if: "$PRODUCTION"
@@ -36,6 +39,28 @@ Test gitlab rule var (yoda):
     - if: "$PRODUCTION"
       when: never
     - if: $AUTO_MESSAGE =~ $CI_COMMIT_MESSAGE
+      when: on_success
+    - when: manual
+  script:
+    - echo "${CI_JOB_NAME}"
+
+##
+
+Test gitlab rule var no quote:
+  rules:
+    - if: "$PRODUCTION"
+      when: never
+    - if: $CI_COMMIT_MESSAGE =~ $AUTO_MESSAGE_NO_QUOTE
+      when: on_success
+    - when: manual
+  script:
+    - echo "${CI_JOB_NAME}"
+
+Test gitlab rule var no quote (yoda):
+  rules:
+    - if: "$PRODUCTION"
+      when: never
+    - if: $AUTO_MESSAGE_NO_QUOTE =~ $CI_COMMIT_MESSAGE
       when: on_success
     - when: manual
   script:
