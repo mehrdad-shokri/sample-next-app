@@ -2,7 +2,6 @@ variables:
   AUTO_DEVOPS_PRODUCTION_AUTO: "/^v/"
 
 Test gitlab rule inline:
-  extends: .autodevops_trigger_production
   rules:
     - if: "$PRODUCTION"
       when: never
