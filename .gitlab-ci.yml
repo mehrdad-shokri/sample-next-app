@@ -1,22 +1,12 @@
-include:
-  - project: SocialGouv/gitlab-ci-yml
-    file: /autodevops.yml
-    ref: v17.0.0-beta.15
-
 variables:
-  AUTO_DEVOPS_RELEASE_AUTO: "true"
   AUTO_DEVOPS_PRODUCTION_AUTO: "/^v/"
 
-  AUTO_DEVOPS_DEV_ENVIRONMENT_NAME: "-dev2"
-  AUTO_DEVOPS_PREPROD_ENVIRONMENT_NAME: "-dev2"
-  AUTO_DEVOPS_PROD_ENVIRONMENT_NAME: "prod2"
-
-Trigger Production:
+Test gitlab rule inline:
   extends: .autodevops_trigger_production
   rules:
     - if: "$PRODUCTION"
       when: never
-    - if: $AUTO_DEVOPS_PRODUCTION_AUTO =~ $CI_COMMIT_TAG
+    - if: /^test/ =~ $CI_COMMIT_REF_NAME
       when: on_success
     - if: "$CI_COMMIT_TAG"
       when: manual
