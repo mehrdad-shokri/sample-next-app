@@ -5,7 +5,7 @@ Test gitlab rule inline:
   rules:
     - if: "$PRODUCTION"
       when: never
-    - if: /^test/ =~ $CI_COMMIT_MESSAGE
+    - if: $CI_COMMIT_MESSAGE =~ /^test/
       when: on_success
     - when: manual
   script:
