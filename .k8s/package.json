@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@kosko/env": "^0.5.2",
-    "@socialgouv/kosko-charts": "link:../../kosko-charts",
+    "@socialgouv/kosko-charts": "github:socialgouv/kosko-charts#next-beta",
     "kosko": "^0.9.2",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.6"
