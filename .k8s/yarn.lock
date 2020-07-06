@@ -107,7 +107,7 @@
 
 "@socialgouv/kosko-charts@github:socialgouv/kosko-charts#next-beta":
   version "2.0.0-beta.16"
-  resolved "https://codeload.github.com/socialgouv/kosko-charts/tar.gz/4f1d3511833ec72ef7e77e2b7fbbc783491f8bae"
+  resolved "https://codeload.github.com/socialgouv/kosko-charts/tar.gz/2ef41d11b7a8daf0fdf050167d0934a9afb019c8"
   dependencies:
     fp-ts "^2.6.7"
     io-ts "2.2.7"
